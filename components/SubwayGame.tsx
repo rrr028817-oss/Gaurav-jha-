@@ -5,6 +5,7 @@
 */
 
 import React, { useEffect, useRef, useState } from 'react';
+import AdUnit from './AdUnit';
 
 interface SubwayGameProps {
   onClose: () => void;
@@ -177,11 +178,7 @@ const SubwayGame: React.FC<SubwayGameProps> = ({ onClose }) => {
       });
 
       // Draw Player
-      const playerScale = 1;
       const pScreenY = h - 50 - (state.playerY * 100);
-      const pScreenX = w / 2 + state.lane * laneWidth * 3 * (1 - 10/10); // Simplified projection for close player
-      
-      // Dynamic player position based on lane
       const finalX = w / 2 + state.lane * (laneWidth * 1.5);
 
       ctx.fillStyle = '#39ff14';
@@ -191,7 +188,6 @@ const SubwayGame: React.FC<SubwayGameProps> = ({ onClose }) => {
       ctx.fillRect(finalX - pSize / 2, pScreenY - pSize, pSize, pSize);
       ctx.shadowBlur = 0;
       
-      // Graffiti "S" on player
       ctx.fillStyle = '#000';
       ctx.font = 'bold 20px Bangers';
       ctx.textAlign = 'center';
@@ -248,6 +244,9 @@ const SubwayGame: React.FC<SubwayGameProps> = ({ onClose }) => {
             <div className="game-modal game-over">
                 <h2 className="game-title text-pink">BUSTED!</h2>
                 <div className="final-score">SCORE: {score}</div>
+                <div className="game-over-ad">
+                  <AdUnit style={{ display: 'block', width: '250px', height: '100px', margin: '10px auto' }} />
+                </div>
                 <button className="game-btn" onClick={startGame}>RETRY</button>
             </div>
         )}

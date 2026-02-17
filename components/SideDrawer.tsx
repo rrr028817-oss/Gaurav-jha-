@@ -1,9 +1,11 @@
+
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
 */
 
 import React from 'react';
+import AdUnit from './AdUnit';
 
 interface SideDrawerProps {
     isOpen: boolean;
@@ -24,6 +26,9 @@ const SideDrawer = ({ isOpen, onClose, title, children }: SideDrawerProps) => {
                 </div>
                 <div className="drawer-body">
                     {children}
+                    <div className="drawer-footer-ad">
+                        <AdUnit className="drawer-ad" />
+                    </div>
                 </div>
             </div>
         </div>
